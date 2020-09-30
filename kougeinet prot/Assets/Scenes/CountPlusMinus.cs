@@ -6,11 +6,14 @@ using UnityEngine.UI;
 public class CountPlusMinus : MonoBehaviour
 {
     //int firstCount = 0;
-    int firstCount = 1;
+    public int firstCount = 1;
     public Text firstText;
+
+    DeleteItem deleteItem;
     // Start is called before the first frame update
     void Start()
     {
+        //firstCount = 1;
         firstText.text = "" + firstCount;
     }
 
@@ -28,10 +31,20 @@ public class CountPlusMinus : MonoBehaviour
 
     public void ClickMinusButton()
     {
+        //if (firstCount == 0)
+        //{
+        //    //Destroy(this.gameObject);
+        //}
         if(firstCount>0)
         {
             firstCount--;
             firstText.text = "" + firstCount;
         }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+        //firstCount--;
+        //firstText.text = "" + firstCount;
     }
 }
