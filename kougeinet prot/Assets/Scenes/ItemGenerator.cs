@@ -8,11 +8,17 @@ public class ItemGenerator : MonoBehaviour
     public GameObject itemPrefab;
     public GameObject Content;
 
-    NameAdd nameAdd;
+    public static string textIn;
+
+    InputNameAdd inputNameAdd;
+
     // Start is called before the first frame update
     void Start()
     {
         //itemPrefab = (GameObject)Resources.Load ("Item");
+        GameObject scriptOnly = GameObject.Find("ScriptOnly");
+        inputNameAdd = scriptOnly.GetComponent<InputNameAdd>();
+        //nameAdd = scriptOnly.GetComponent<NameAdd>();
     }
 
     // Update is called once per frame
@@ -20,17 +26,24 @@ public class ItemGenerator : MonoBehaviour
     {
         
     }
-    public void ItemGene(Text text)
+    public void ItemGene()
     {
-        GameObject Item = Instantiate(itemPrefab) as GameObject;
+        //GameObject Item = Instantiate(itemPrefab) as GameObject;
 
-        //nameAdd.NameAddClick();
-        NameAdd n = Item.GetComponent<NameAdd>();
-        n.SetName(text);
+        string textBox;
+        textBox = inputNameAdd.inputField.text;
 
-        Item.transform.position = new Vector2(0.0f, 0.0f);
+        textIn = textBox;
 
-        Item.transform.SetParent(Content.transform, false);
+        //NameAdd n = Item.GetComponent<NameAdd>();
+        //n.SetName(textBox);
+        //n.SetNameTest();
+        //Item.transform.position = new Vector2(0.0f, 0.0f);
+        //Item.transform.SetParent(Content.transform, false);
+
+        GameObject itemObj = (GameObject)Instantiate(itemPrefab);
+        itemObj.transform.Find("Item_Name").gameObject.GetComponent<Text>().text = "" + textBox;
+        itemObj.transform.SetParent(Content.transform, false);
     }
 }
 

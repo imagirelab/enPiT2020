@@ -10,7 +10,7 @@ public class InputNameAdd : MonoBehaviour
     public InputField inputField;
     public static Text text;
 
-    List<string> myList = new List<string>();
+    //List<string> myList = new List<string>();
 
     // Start is called before the first frame update
     void Start()
@@ -32,8 +32,8 @@ public class InputNameAdd : MonoBehaviour
         //text.text = inputField.text;
     }
 
-    void SetName()
-    {
+    //void SetName()
+    //{
 
-    }
+    //}
 }
