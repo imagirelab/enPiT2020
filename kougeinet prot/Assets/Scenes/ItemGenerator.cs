@@ -8,17 +8,9 @@ public class ItemGenerator : MonoBehaviour
     public GameObject itemPrefab;
     public GameObject Content;
 
-    public static string textIn;
-
-    InputNameAdd inputNameAdd;
-
     // Start is called before the first frame update
     void Start()
     {
-        //itemPrefab = (GameObject)Resources.Load ("Item");
-        GameObject scriptOnly = GameObject.Find("ScriptOnly");
-        inputNameAdd = scriptOnly.GetComponent<InputNameAdd>();
-        //nameAdd = scriptOnly.GetComponent<NameAdd>();
     }
 
     // Update is called once per frame
@@ -28,22 +20,14 @@ public class ItemGenerator : MonoBehaviour
     }
     public void ItemGene()
     {
-        //GameObject Item = Instantiate(itemPrefab) as GameObject;
-
-        string textBox;
-        textBox = inputNameAdd.inputField.text;
-
-        textIn = textBox;
-
-        //NameAdd n = Item.GetComponent<NameAdd>();
-        //n.SetName(textBox);
-        //n.SetNameTest();
-        //Item.transform.position = new Vector2(0.0f, 0.0f);
-        //Item.transform.SetParent(Content.transform, false);
-
         GameObject itemObj = (GameObject)Instantiate(itemPrefab);
-        itemObj.transform.Find("Item_Name").gameObject.GetComponent<Text>().text = "" + textBox;
+
+        // スクロールビューにぶら下げる
         itemObj.transform.SetParent(Content.transform, false);
+
+        // 名前の設定
+        string name = GameObject.Find("InputField").transform.Find("Text").GetComponent<Text>().text;
+        itemObj.GetComponent<ItemBehaviour>().SetName(name);
     }
 }
 
