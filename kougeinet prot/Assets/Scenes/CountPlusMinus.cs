@@ -10,9 +10,12 @@ public class CountPlusMinus : MonoBehaviour
     public Text firstText;
 
     DeleteItem deleteItem;
+    SaveScript saveScript;
     // Start is called before the first frame update
     void Start()
     {
+        GameObject scriptOnly = GameObject.Find("ScriptOnly");
+        saveScript = scriptOnly.GetComponent<SaveScript>();
         //firstCount = 1;
         firstText.text = "" + firstCount;
     }
@@ -42,6 +45,7 @@ public class CountPlusMinus : MonoBehaviour
         }
         else
         {
+            saveScript.DeleteList();
             Destroy(this.gameObject);
         }
         //firstCount--;

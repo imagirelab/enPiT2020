@@ -6,6 +6,8 @@ public class SaveScript : MonoBehaviour
 {
     List<int> intList = new List<int>();
     List<string> textList = new List<string>();
+    int countClick = 0;
+    string countBox;
 
     // Start is called before the first frame update
     void Start()
@@ -22,8 +24,18 @@ public class SaveScript : MonoBehaviour
         
     }
 
-    void AddSave()
+    public void AddList()
     {
+        countBox = countClick.ToString();
+        PlayerPrefs.SetString("" + countBox, ItemGenerator.textIn);
         //textList.Add(ItemGenerator.textIn);
+        //Debug.Log(textList.Count);
+        countClick++;
+    }
+
+    public void DeleteList()
+    {
+        PlayerPrefs.DeleteKey("" + countBox);
+        //textList.Remove(ItemGenerator.textIn);
     }
 }
