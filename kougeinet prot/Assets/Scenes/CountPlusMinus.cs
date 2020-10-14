@@ -6,11 +6,14 @@ using UnityEngine.UI;
 public class CountPlusMinus : MonoBehaviour
 {
     //int firstCount = 0;
+    public static int endCount = 0;
     public int firstCount = 1;
     public Text firstText;
 
     DeleteItem deleteItem;
     SaveScript saveScript;
+
+    string myName;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +21,7 @@ public class CountPlusMinus : MonoBehaviour
         saveScript = scriptOnly.GetComponent<SaveScript>();
         //firstCount = 1;
         firstText.text = "" + firstCount;
+        endCount = firstCount;
     }
 
     // Update is called once per frame
@@ -29,7 +33,10 @@ public class CountPlusMinus : MonoBehaviour
     public void ClickPlusButton()
     {
         firstCount++;
+        endCount = firstCount;
         firstText.text = "" + firstCount;
+
+        // valueを入れる
     }
 
     public void ClickMinusButton()
@@ -38,14 +45,21 @@ public class CountPlusMinus : MonoBehaviour
         //{
         //    //Destroy(this.gameObject);
         //}
+
+        // valueを入れる
+
         if(firstCount>0)
         {
             firstCount--;
+            endCount = firstCount;
             firstText.text = "" + firstCount;
         }
         else
         {
-            saveScript.DeleteList();
+            myName = gameObject.name;
+            //Debug.Log("////////" + myName + "///////");
+
+            saveScript.DeleteList(myName);
             Destroy(this.gameObject);
         }
         //firstCount--;

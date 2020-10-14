@@ -42,6 +42,8 @@ public class ItemGenerator : MonoBehaviour
         //Item.transform.SetParent(Content.transform, false);
 
         GameObject itemObj = (GameObject)Instantiate(itemPrefab);
+        itemObj.name = "" + SaveScript.num;
+        SaveScript.num++;
         itemObj.transform.Find("Item_Name").gameObject.GetComponent<Text>().text = "" + textBox;
         itemObj.transform.SetParent(Content.transform, false);
     }

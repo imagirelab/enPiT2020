@@ -36,5 +36,4 @@ public class NameAdd : MonoBehaviour
     {
         nameText.text = "" + ItemGenerator.textIn;
     }
-
 }
