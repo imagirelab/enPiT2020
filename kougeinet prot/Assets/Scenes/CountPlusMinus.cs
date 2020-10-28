@@ -9,6 +9,7 @@ public class CountPlusMinus : MonoBehaviour
     public static int endCount = 0;
     public int firstCount = 1;
     public Text firstText;
+    public InputField firstText2;
 
     DeleteItem deleteItem;
     SaveScript saveScript;
@@ -23,11 +24,11 @@ public class CountPlusMinus : MonoBehaviour
         //firstCount = 1;
 
         //firstCount = int.Parse(firstText.text);
-        firstCount = int.Parse(gameObject.transform.Find("Item_Value").gameObject.GetComponent<Text>().text);
+        firstCount = int.Parse(gameObject.transform.Find("Item_Value2").gameObject.GetComponent<InputField>().text);
 
         //Debug.Log("bbbbbbbbbbb" + firstCount);
         //firstText.text = "" + firstCount;
-        Debug.Log("aaaaaaaaaaa"+firstCount);
+        //Debug.Log("aaaaaaaaaaa"+firstCount);
         endCount = firstCount;
 
         myName = gameObject.name;
@@ -39,15 +40,27 @@ public class CountPlusMinus : MonoBehaviour
         
     }
 
+    public void ValueChange()
+    {
+        saveScript = GameObject.Find("ScriptOnly").GetComponent<SaveScript>();
+        myName = gameObject.name;
+
+        firstCount = int.Parse(firstText2.text);
+        endCount = firstCount;
+        firstText2.text = "" + firstCount;
+        saveScript.ChangeCount(myName);
+    }
+
     public void ClickPlusButton()
     {
         firstCount++;
         endCount = firstCount;
-        firstText.text = "" + firstCount;
+        //firstText.text = "" + firstCount;
+        firstText2.text = "" + firstCount;
 
         // valueを入れる
         //myName = gameObject.name;
-        Debug.Log("[[[" + myName);
+        //Debug.Log("[[[" + myName);
         saveScript.ChangeCount(myName);
     }
 
@@ -60,14 +73,15 @@ public class CountPlusMinus : MonoBehaviour
 
         // valueを入れる
         //myName = gameObject.name;
-        Debug.Log("[[[" + myName);
+        //Debug.Log("[[[" + myName);
         saveScript.ChangeCount(myName);
 
         if (firstCount > 0)
         {
             firstCount--;
             endCount = firstCount;
-            firstText.text = "" + firstCount;
+            //firstText.text = "" + firstCount;
+            firstText2.text = "" + firstCount;
             saveScript.ChangeCount(myName);
         }
         else

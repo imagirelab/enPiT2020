@@ -14,7 +14,7 @@ public class SaveScript : MonoBehaviour
     public GameObject itemPrefab;
     public GameObject Content;
 
-    int countClick = 0;
+    //int countClick = 0;
     //string countBox;
     int countSize = 0;
     bool dataFlag = false;
@@ -49,11 +49,12 @@ public class SaveScript : MonoBehaviour
             num++;
 
             itemObj.transform.Find("Item_Name").gameObject.GetComponent<Text>().text = "" + textList[i];
-            itemObj.transform.Find("Item_Value").gameObject.GetComponent<Text>().text = "" + countList[i];
+            //itemObj.transform.Find("Item_Value2").gameObject.GetComponent<Text>().text = "" + countList[i];
+            itemObj.transform.Find("Item_Value2").gameObject.GetComponent<InputField>().text = "" + countList[i];
             itemObj.transform.Find("memo").gameObject.GetComponent<InputField>().text = "" + memoList[i];
             itemObj.transform.SetParent(Content.transform, false);
 
-            Debug.Log("now " + countList[i]);
+            //Debug.Log("now " + countList[i]);
         }
     }
 
@@ -79,10 +80,10 @@ public class SaveScript : MonoBehaviour
         textList.Add(ItemGenerator.textIn);////////////////////////////////////////////////////////////////////////////////////
         valueList.Add("" + num);
         countList.Add(1);
-        memoList.Add(" ");
+        memoList.Add("");
 
         //valueList.Add(CountPlusMinus.endCount);
-        Debug.Log(valueList.Count);
+        //Debug.Log(valueList.Count);
         //countClick++;
     }
 
@@ -93,7 +94,7 @@ public class SaveScript : MonoBehaviour
         valueList.Remove("" + myName);
         countList.RemoveAt(int.Parse(myName));
         memoList.RemoveAt(int.Parse(myName));
-        Debug.Log("in "+ valueList.Count);
+        //Debug.Log("in "+ valueList.Count);
         //intList.Remove(CountPlusMinus.endCount);
     }
 
@@ -111,11 +112,18 @@ public class SaveScript : MonoBehaviour
         //Debug.Log("COUNTLIST" + countList[i]);
     }
 
+    public void ChangeCount2(string myName)
+    {
+        int i = int.Parse(myName);
+        countList[i] = -1;
+        //Debug.Log("COUNTLIST" + countList[i]);
+    }
+
     public void ChangeMemo(string myName, string memo)
     {
         int i = int.Parse(myName);
         memoList[i] = memo;
-        Debug.Log("memoLIST" + i);
+        //Debug.Log("memoLIST" + i);
     }
 
     private void OnApplicationQuit()
@@ -129,7 +137,7 @@ public class SaveScript : MonoBehaviour
             {
                 if (countList[i] > -1)
                 {
-                    Debug.Log("COUNTLIST" + countList[i]);
+                    //Debug.Log("COUNTLIST" + countList[i]);
                     PlayerPrefs.SetString("name" + check, textList[i]);
                     PlayerPrefs.SetInt("num" + check, countList[i]);
                     PlayerPrefs.SetString("memo" + check, memoList[i]);

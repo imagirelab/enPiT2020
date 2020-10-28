@@ -37,7 +37,7 @@ public class Memosave : MonoBehaviour
         saveScript = GameObject.Find("ScriptOnly").GetComponent<SaveScript>();
         myName = gameObject.name;
         memo = inputField.text;
-        Debug.Log(myName + ":::::"+memo);
+        //Debug.Log(myName + ":::::"+memo);
         saveScript.ChangeMemo(myName, memo);
         //saveScript.GetComponent<SaveScript>().ChangeMemo(myName);
     }
