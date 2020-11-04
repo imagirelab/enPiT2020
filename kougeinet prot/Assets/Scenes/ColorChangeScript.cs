@@ -9,7 +9,13 @@ public class ColorChangeScript : MonoBehaviour
     public Button whiteButton;
     public Button redButton;
     public Button blueButton;
+    public Button greenButton;
     public Button yellowButton;
+    public Button blackButton;
+    public Button purpleButton;
+    public Button cyanButton;
+    public Button orangeButton;
+    public Button dGreenButton;
 
     public static Color nowColor;
     public static int colorNum;
@@ -17,12 +23,18 @@ public class ColorChangeScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        colorImage.color = Color.white;
-        whiteButton.image.color = Color.white;
-        redButton.image.color = Color.red;
-        blueButton.image.color = Color.blue;
-        yellowButton.image.color = Color.yellow;
-        nowColor = Color.white;
+        colorImage.color = SaveScript.whiteC;
+        whiteButton.image.color = SaveScript.whiteC;
+        redButton.image.color = SaveScript.redC;
+        blueButton.image.color = SaveScript.blueC;
+        greenButton.image.color = SaveScript.greenC;
+        yellowButton.image.color = SaveScript.yellowC;
+        blackButton.image.color = SaveScript.blackC;
+        purpleButton.image.color = SaveScript.purpleC;
+        cyanButton.image.color = SaveScript.cyanC;
+        orangeButton.image.color = SaveScript.orangeC;
+        dGreenButton.image.color = SaveScript.dGreenC;
+        nowColor = SaveScript.whiteC;
     }
 
     // Update is called once per frame
@@ -33,26 +45,62 @@ public class ColorChangeScript : MonoBehaviour
 
     public void WhiteChangeImage()
     {
-        colorImage.color = Color.white;
+        colorImage.color = SaveScript.whiteC;
         nowColor = colorImage.color;
         colorNum = 0;
     }
     public void RedChangeImage()
     {
-        colorImage.color = Color.red;
+        colorImage.color = SaveScript.redC;
         nowColor = colorImage.color;
         colorNum = 1;
     }
     public void BlueChangeImage()
     {
-        colorImage.color = Color.blue;
+        colorImage.color = SaveScript.blueC;
         nowColor = colorImage.color;
         colorNum = 2;
     }
-    public void YellowChangeImage()
+    public void GreenChangeImage()
     {
-        colorImage.color = Color.yellow;
+        colorImage.color = SaveScript.greenC;
         nowColor = colorImage.color;
         colorNum = 3;
+    }
+    public void YellowChangeImage()
+    {
+        colorImage.color = SaveScript.yellowC;
+        nowColor = colorImage.color;
+        colorNum = 4;
+    }
+    public void BlackChangeImage()
+    {
+        colorImage.color = SaveScript.blackC;
+        nowColor = colorImage.color;
+        colorNum = 5;
+    }
+    public void PurpleChangeImage()
+    {
+        colorImage.color = SaveScript.purpleC;
+        nowColor = colorImage.color;
+        colorNum = 6;
+    }
+    public void CyanChangeImage()
+    {
+        colorImage.color = SaveScript.cyanC;
+        nowColor = colorImage.color;
+        colorNum = 7;
+    }
+    public void OrangeChangeImage()
+    {
+        colorImage.color = SaveScript.orangeC;
+        nowColor = colorImage.color;
+        colorNum = 8;
+    }
+    public void DGreenChangeImage()
+    {
+        colorImage.color = SaveScript.dGreenC;
+        nowColor = colorImage.color;
+        colorNum = 9;
     }
 }

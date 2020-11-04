@@ -6,6 +6,19 @@ using UnityEngine.UI;
 
 public class SaveScript : MonoBehaviour
 {
+    // color
+    public static Color whiteC = new Color(0.9f, 0.9f, 0.9f, 1.0f);
+    public static Color redC = new Color(1.0f, 0.4f, 0.4f, 1.0f);
+    public static Color blueC = new Color(0.4f, 0.4f, 1.0f, 1.0f);
+    public static Color greenC = new Color(0.4f, 1.0f, 0.4f, 0.8f);
+    public static Color yellowC = new Color(1.0f, 1.0f, 0.4f, 0.8f);
+    public static Color blackC = new Color(0.3f, 0.3f, 0.3f, 1.0f);
+    public static Color purpleC = new Color(1.0f, 0.4f, 1.0f, 0.9f);
+    public static Color cyanC = new Color(0.4f, 1.0f, 1.0f, 0.9f);
+    public static Color orangeC = new Color(1.0f, 0.6f, 0.0f, 0.9f);
+    public static Color dGreenC = new Color(0.0f, 0.6f, 0.0f, 0.9f);
+
+    // List
     List<string> textList = new List<string>();
     List<string> valueList = new List<string>();
     List<int> countList = new List<int>();
@@ -15,8 +28,6 @@ public class SaveScript : MonoBehaviour
     public GameObject itemPrefab;
     public GameObject Content;
 
-    //int countClick = 0;
-    //string countBox;
     int countSize = 0;
     bool dataFlag = false;
 
@@ -36,93 +47,82 @@ public class SaveScript : MonoBehaviour
             countList.Add(PlayerPrefs.GetInt("num" + i, 5));
             memoList.Add(PlayerPrefs.GetString("memo" + i, ""));
             colorList.Add(PlayerPrefs.GetInt("color" + i, 0));
-            //CountPlusMinus.endCount = PlayerPrefs.GetInt("num" + i, 1);
-            //countPlusMinus.SetStart();
-            //Debug.Log(textList[i]);
-
 
             GameObject itemObj = (GameObject)Instantiate(itemPrefab);
-
-            //GameObject item = GameObject.Find("num" + i);
-            //countPlusMinus = item.GetComponent<CountPlusMinus>();
-            //countPlusMinus.CountSet();
 
             itemObj.name = "" + num;
             num++;
 
-            if (colorList[i] == 0)
+            switch(colorList[i])
             {
-                itemObj.transform.Find("ItemBox").gameObject.GetComponent<Image>().color = Color.white;
-            }
-            if (colorList[i] == 1)
-            {
-                itemObj.transform.Find("ItemBox").gameObject.GetComponent<Image>().color = Color.red;
-            }
-            if (colorList[i] == 2)
-            {
-                itemObj.transform.Find("ItemBox").gameObject.GetComponent<Image>().color = Color.blue;
-            }
-            if (colorList[i] == 3)
-            {
-                itemObj.transform.Find("ItemBox").gameObject.GetComponent<Image>().color = Color.yellow;
+                case 0:
+                    itemObj.transform.Find("ItemBox").gameObject.GetComponent<Image>().color = whiteC;
+                    break;
+                case 1:
+                    itemObj.transform.Find("ItemBox").gameObject.GetComponent<Image>().color = redC;
+                    break;
+                case 2:
+                    itemObj.transform.Find("ItemBox").gameObject.GetComponent<Image>().color = blueC;
+                    break;
+                case 3:
+                    itemObj.transform.Find("ItemBox").gameObject.GetComponent<Image>().color = greenC;
+                    break;
+                case 4:
+                    itemObj.transform.Find("ItemBox").gameObject.GetComponent<Image>().color = yellowC;
+                    break;
+                case 5:
+                    itemObj.transform.Find("ItemBox").gameObject.GetComponent<Image>().color = blackC;
+                    break;
+                case 6:
+                    itemObj.transform.Find("ItemBox").gameObject.GetComponent<Image>().color = purpleC;
+                    break;
+                case 7:
+                    itemObj.transform.Find("ItemBox").gameObject.GetComponent<Image>().color = cyanC;
+                    break;
+                case 8:
+                    itemObj.transform.Find("ItemBox").gameObject.GetComponent<Image>().color = orangeC;
+                    break;
+                case 9:
+                    itemObj.transform.Find("ItemBox").gameObject.GetComponent<Image>().color = dGreenC;
+                    break;
+                case 10:
+                    //itemObj.transform.Find("ItemBox").gameObject.GetComponent<Image>().color = blackC;
+                    break;
             }
 
             itemObj.transform.Find("Item_Name").gameObject.GetComponent<Text>().text = "" + textList[i];
-            //itemObj.transform.Find("ItemBox").gameObject.GetComponent<Image>().color = ;
-            //itemObj.transform.Find("Item_Value2").gameObject.GetComponent<Text>().text = "" + countList[i];
             itemObj.transform.Find("Item_Value2").gameObject.GetComponent<InputField>().text = "" + countList[i];
             itemObj.transform.Find("memo").gameObject.GetComponent<InputField>().text = "" + memoList[i];
             itemObj.transform.SetParent(Content.transform, false);
-
-            //Debug.Log("now " + countList[i]);
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        //if(Input.GetKeyDown(KeyCode.R))
-        //{
-        //    Debug.Log("ooooooooo");
-        //    PlayerPrefs.DeleteAll();
-        //}
+
     }
-    //public int ValueReturn(int i)
-    //{
-    //    return countList[i];
-    //}
 
     public void AddList()
     {
-        //countBox = countClick.ToString();
-        //PlayerPrefs.SetString("" + countBox, ItemGenerator.textIn);
-
-        textList.Add(ItemGenerator.textIn);////////////////////////////////////////////////////////////////////////////////////
+        textList.Add(ItemGenerator.textIn);
         valueList.Add("" + num);
         countList.Add(1);
         memoList.Add("");
         colorList.Add(ColorChangeScript.colorNum);
-
-        //valueList.Add(CountPlusMinus.endCount);
-        //Debug.Log(valueList.Count);
-        //countClick++;
     }
 
     public void DeleteList(string myName)
     {
-        //PlayerPrefs.DeleteKey();
-        textList.RemoveAt(int.Parse(myName));////////////////////////////////////////////////////////////////////////////
+        textList.RemoveAt(int.Parse(myName));
         valueList.Remove("" + myName);
         countList.RemoveAt(int.Parse(myName));
         memoList.RemoveAt(int.Parse(myName));
         colorList.RemoveAt(int.Parse(myName));
-        //Debug.Log("in "+ valueList.Count);
-        //intList.Remove(CountPlusMinus.endCount);
     }
 
     public void DataDeleteButton()
     {
-        //Debug.Log("ooooooooo");
         dataFlag = true;
         PlayerPrefs.DeleteAll();
     }
@@ -131,21 +131,18 @@ public class SaveScript : MonoBehaviour
     {
         int i = int.Parse(myName);
         countList[i] = CountPlusMinus.endCount;
-        //Debug.Log("COUNTLIST" + countList[i]);
     }
 
     public void ChangeCount2(string myName)
     {
         int i = int.Parse(myName);
         countList[i] = -1;
-        //Debug.Log("COUNTLIST" + countList[i]);
     }
 
     public void ChangeMemo(string myName, string memo)
     {
         int i = int.Parse(myName);
         memoList[i] = memo;
-        //Debug.Log("memoLIST" + i);
     }
 
     private void OnApplicationQuit()
@@ -153,20 +150,16 @@ public class SaveScript : MonoBehaviour
         if (dataFlag == false)
         {
             int check = 0;
-            //GameObject[] box = GameObject.FindGameObjectsWithTag("item");
             // 終了時にセーブ
             for (int i = 0; i < valueList.Count; i++)
             {
                 if (countList[i] > -1)
                 {
-                    //Debug.Log("COUNTLIST" + countList[i]);
                     PlayerPrefs.SetInt("color" + check, colorList[i]);
                     PlayerPrefs.SetString("name" + check, textList[i]);
                     PlayerPrefs.SetInt("num" + check, countList[i]);
                     PlayerPrefs.SetString("memo" + check, memoList[i]);
                     check++;
-
-                    //Debug.Log("COUNTLIST" + countList[i]);
                 }
             }
             PlayerPrefs.SetInt("countSize", check);
@@ -175,12 +168,6 @@ public class SaveScript : MonoBehaviour
         {
             dataFlag = false;
         }
-
-        //GameObject[] saveBox = GameObject.FindGameObjectsWithTag("item");
-        //valueList[0]=saveBox[0].transform.Find("0").gameObject.GetComponent<Text>().text;
-        //valueList.Add(saveBox[0].GetComponent<Text>());
-        //Debug.Log(valueList[0]);
-        //PlayerPrefs.SetString("name" + 0, saveBox[0]);
     }
 
 

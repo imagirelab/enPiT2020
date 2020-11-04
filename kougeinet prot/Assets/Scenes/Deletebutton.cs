@@ -24,7 +24,6 @@ public class Deletebutton : MonoBehaviour
     public void Dele()
     {
         myName = gameObject.name;
-        //saveScript.ChangeCount2(myName);
         saveScript.ChangeCount2(myName);
         Destroy(this.gameObject);
     }

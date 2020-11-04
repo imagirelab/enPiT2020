@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class DeleteItem : MonoBehaviour
 {
-    //CountPlusMinus countPlusMinus;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,10 +18,6 @@ public class DeleteItem : MonoBehaviour
 
     public void TestClick()
     {
-        //if (CountPlusMinus.firstCount < 0)
-        //{
-        //    Destroy(this.gameObject);
-        //}
         Destroy(this.gameObject);
     }
 }

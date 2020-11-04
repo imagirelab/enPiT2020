@@ -7,8 +7,6 @@ public class NameAdd : MonoBehaviour
 {
     public Text nameText;
 
-    //InputNameAdd inputNameAdd;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -20,12 +18,6 @@ public class NameAdd : MonoBehaviour
     {
         
     }
-
-    //public void NameAddClick(string text)
-    //{
-    //    //nameText.text = InputNameAdd.inputField.text;
-    //    nameText.text = "" + text;
-    //}
 
     public void SetName(string text)
     {

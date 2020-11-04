@@ -31,9 +31,4 @@ public class InputNameAdd : MonoBehaviour
         //テキストにinputFieldの内容を反映
         //text.text = inputField.text;
     }
-
-    //void SetName()
-    //{
-
-    //}
 }
