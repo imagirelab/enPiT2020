@@ -10,6 +10,7 @@ public class SaveScript : MonoBehaviour
     List<string> valueList = new List<string>();
     List<int> countList = new List<int>();
     List<string> memoList = new List<string>();
+    List<int> colorList = new List<int>();
 
     public GameObject itemPrefab;
     public GameObject Content;
@@ -34,6 +35,7 @@ public class SaveScript : MonoBehaviour
             valueList.Add("" + i);
             countList.Add(PlayerPrefs.GetInt("num" + i, 5));
             memoList.Add(PlayerPrefs.GetString("memo" + i, ""));
+            colorList.Add(PlayerPrefs.GetInt("color" + i, 0));
             //CountPlusMinus.endCount = PlayerPrefs.GetInt("num" + i, 1);
             //countPlusMinus.SetStart();
             //Debug.Log(textList[i]);
@@ -48,7 +50,25 @@ public class SaveScript : MonoBehaviour
             itemObj.name = "" + num;
             num++;
 
+            if (colorList[i] == 0)
+            {
+                itemObj.transform.Find("ItemBox").gameObject.GetComponent<Image>().color = Color.white;
+            }
+            if (colorList[i] == 1)
+            {
+                itemObj.transform.Find("ItemBox").gameObject.GetComponent<Image>().color = Color.red;
+            }
+            if (colorList[i] == 2)
+            {
+                itemObj.transform.Find("ItemBox").gameObject.GetComponent<Image>().color = Color.blue;
+            }
+            if (colorList[i] == 3)
+            {
+                itemObj.transform.Find("ItemBox").gameObject.GetComponent<Image>().color = Color.yellow;
+            }
+
             itemObj.transform.Find("Item_Name").gameObject.GetComponent<Text>().text = "" + textList[i];
+            //itemObj.transform.Find("ItemBox").gameObject.GetComponent<Image>().color = ;
             //itemObj.transform.Find("Item_Value2").gameObject.GetComponent<Text>().text = "" + countList[i];
             itemObj.transform.Find("Item_Value2").gameObject.GetComponent<InputField>().text = "" + countList[i];
             itemObj.transform.Find("memo").gameObject.GetComponent<InputField>().text = "" + memoList[i];
@@ -81,6 +101,7 @@ public class SaveScript : MonoBehaviour
         valueList.Add("" + num);
         countList.Add(1);
         memoList.Add("");
+        colorList.Add(ColorChangeScript.colorNum);
 
         //valueList.Add(CountPlusMinus.endCount);
         //Debug.Log(valueList.Count);
@@ -94,6 +115,7 @@ public class SaveScript : MonoBehaviour
         valueList.Remove("" + myName);
         countList.RemoveAt(int.Parse(myName));
         memoList.RemoveAt(int.Parse(myName));
+        colorList.RemoveAt(int.Parse(myName));
         //Debug.Log("in "+ valueList.Count);
         //intList.Remove(CountPlusMinus.endCount);
     }
@@ -138,6 +160,7 @@ public class SaveScript : MonoBehaviour
                 if (countList[i] > -1)
                 {
                     //Debug.Log("COUNTLIST" + countList[i]);
+                    PlayerPrefs.SetInt("color" + check, colorList[i]);
                     PlayerPrefs.SetString("name" + check, textList[i]);
                     PlayerPrefs.SetInt("num" + check, countList[i]);
                     PlayerPrefs.SetString("memo" + check, memoList[i]);

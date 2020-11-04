@@ -12,6 +12,8 @@ public class ItemGenerator : MonoBehaviour
 
     InputNameAdd inputNameAdd;
 
+    //public Image backImage;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +46,8 @@ public class ItemGenerator : MonoBehaviour
         GameObject itemObj = (GameObject)Instantiate(itemPrefab);
         itemObj.name = "" + SaveScript.num;
         SaveScript.num++;
+        //backImage.color = ColorChangeScript.nowColor.color;
+        itemObj.transform.Find("ItemBox").gameObject.GetComponent<Image>().color = ColorChangeScript.nowColor;
         itemObj.transform.Find("Item_Name").gameObject.GetComponent<Text>().text = "" + textBox;
         itemObj.transform.SetParent(Content.transform, false);
     }
