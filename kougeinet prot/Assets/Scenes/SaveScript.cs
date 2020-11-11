@@ -90,7 +90,7 @@ public class SaveScript : MonoBehaviour
                     break;
             }
 
-            itemObj.transform.Find("Item_Name").gameObject.GetComponent<Text>().text = "" + textList[i];
+            itemObj.transform.Find("Item_Name").gameObject.GetComponent<InputField>().text = "" + textList[i];
             itemObj.transform.Find("Item_Value2").gameObject.GetComponent<InputField>().text = "" + countList[i];
             itemObj.transform.Find("memo").gameObject.GetComponent<InputField>().text = "" + memoList[i];
             itemObj.transform.SetParent(Content.transform, false);
@@ -143,6 +143,12 @@ public class SaveScript : MonoBehaviour
     {
         int i = int.Parse(myName);
         memoList[i] = memo;
+    }
+
+    public void ChangeName(string myName, string itemname)
+    {
+        int i = int.Parse(myName);
+        textList[i] = itemname;
     }
 
     private void OnApplicationQuit()

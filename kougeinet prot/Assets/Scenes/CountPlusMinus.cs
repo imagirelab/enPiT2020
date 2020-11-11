@@ -47,7 +47,10 @@ public class CountPlusMinus : MonoBehaviour
 
     public void ClickPlusButton()
     {
-        firstCount++;
+        if (firstCount<99999)
+        {
+            firstCount++;
+        }
         endCount = firstCount;
         firstText2.text = "" + firstCount;
 

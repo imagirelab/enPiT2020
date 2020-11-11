@@ -5,27 +5,29 @@ using UnityEngine.UI;
 
 public class NameAdd : MonoBehaviour
 {
-    public Text nameText;
+    public InputField inputField;
+    public string itemname;
+    string myName;
+    SaveScript saveScript;
 
-    // Start is called before the first frame update
     void Start()
     {
+        inputField.text = gameObject.transform.Find("Item_Name").gameObject.GetComponent<InputField>().text;
 
+        myName = gameObject.name;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    public void SetName(string text)
+    public void ItemNames()
     {
-        nameText.text = "" + text;
-    }
-
-    public void SetNameTest()
-    {
-        nameText.text = "" + ItemGenerator.textIn;
+        saveScript = GameObject.Find("ScriptOnly").GetComponent<SaveScript>();
+        myName = gameObject.name;
+        itemname = inputField.text;
+        saveScript.ChangeName(myName, itemname);
     }
 }

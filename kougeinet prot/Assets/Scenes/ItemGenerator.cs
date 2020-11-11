@@ -35,7 +35,8 @@ public class ItemGenerator : MonoBehaviour
         itemObj.name = "" + SaveScript.num;
         SaveScript.num++;
         itemObj.transform.Find("ItemBox").gameObject.GetComponent<Image>().color = ColorChangeScript.nowColor;
-        itemObj.transform.Find("Item_Name").gameObject.GetComponent<Text>().text = "" + textBox;
+        //itemObj.transform.Find("Item_Name").gameObject.GetComponent<Text>().text = "" + textBox;
+        itemObj.transform.Find("Item_Name").gameObject.GetComponent<InputField>().text = "" + textBox;
         itemObj.transform.SetParent(Content.transform, false);
     }
 }
