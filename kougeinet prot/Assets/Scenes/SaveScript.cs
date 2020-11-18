@@ -40,6 +40,7 @@ public class SaveScript : MonoBehaviour
     {
         // Loading
         countSize = PlayerPrefs.GetInt("countSize", 0);
+        ElementIndex.indexBox = countSize;
         for (int i = 0; i < countSize; i++)
         {
             textList.Add(PlayerPrefs.GetString("name" + i, "lol"));
@@ -110,6 +111,8 @@ public class SaveScript : MonoBehaviour
         countList.Add(1);
         memoList.Add("");
         colorList.Add(ColorChangeScript.colorNum);
+        //並べ替え
+        ElementIndex.indexBox = countSize;
     }
 
     public void DeleteList(string myName)
